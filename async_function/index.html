@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>async function concept</h1>
+    <button id="stop">stop</button>
+
+
+    <script>
+
+        // access the h1 and stop button.
+        let h1 = document.querySelector("h1");
+        let stop = document.querySelector("#stop");
+
+        // setTimeout function execute after 5 second.
+        let colorchange =
+            () => {
+                h1.innerText = " async-await function concept";
+                h1.style.color = "red";
+            };
+        let changetext = setTimeout(colorchange, 5000);
+
+        // clearInterval function clear the setTimeout function.
+
+        stop.addEventListener("click", () => {
+            clearInterval(changetext);
+            console.log("stoppeeddd");
+            
+
+        });
+
+    </script>
+</body>
+
+</html>

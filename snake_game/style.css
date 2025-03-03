@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.dashboard{
+    text-align: center;
+    background-color: rgba(25, 33, 146, 0.596);
+}
+.playground{
+    text-align: center;
+}
+.container{
+    height: 70vh;
+    width: 70vh;
+    border: 5px solid black;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: absolute;
+    left: 39rem;
+    margin-top: 3rem;
+}
+.snake{
+    padding: 1rem;
+    background-color: #08f32f;   
+}
+.box{
+    width: 70vh;
+    display: block;
+    position: relative;
+    top: 45rem;
+    left: 39rem;
+}
+.box>div{
+    margin-bottom: 1rem;
+}
+button{
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+.controls>button{
+    background-color: skyblue;
+    position:relative;
+    display: inline-block;
+}
+.up{
+    padding: 13px;
+    left: 2.5rem;
+}
+.down{
+    padding: 13px;
+    top: 3rem;
+}
+.left, .right{
+    top: 3rem;
+    padding: 12px;
+}
+.right{
+    left: 2.5rem;
+}
+button:focus{
+    background-color: greenyellow;
+}
+.resetbtn>button{
+    background-color: red;
+}
+.hide{
+    display: none;
+}

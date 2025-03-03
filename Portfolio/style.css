@@ -1,0 +1,488 @@
+@import 'variables/variables.css';
+
+/* CSS Variables */
+:root {
+    /* Color Variables */
+    --primary-color: hsl(256, 43%, 8%);
+    /* Dark navy blue */
+    --secondary-color: hsl(0, 0%, 98%);
+    /* Light background */
+    --accent-color: hsl(136, 65%, 51%);
+    /* Vibrant green */
+    --text-color: hsl(0, 0%, 5%);
+    --background-color: hsl(0, 0%, 100%);
+
+    /* Font Family Variables */
+    --body-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --heading-font: 'Arial', sans-serif;
+
+    /* Font Size Variables */
+    --body-font-size: 1rem;
+    --heading-font-size: 2.5rem;
+
+    /* Navigation Bar */
+    --nav-gap: 2rem;
+    --container-padding: 1rem;
+
+    /* Spacing Variables */
+    --small-spacing: 0.25rem;
+    --medium-spacing: 0.5rem;
+    --large-spacing: 1rem;
+    --x-large-spacing: 2rem;
+
+
+    /* Transition Variables */
+    --transition-timing: ease-in-out;
+    --transition-duration: 0.3s;
+    /* Corrected to match the last definition */
+    --light-color: #ecf0f1;
+    --dark-color: #2c3e50;
+
+    /* Spacing */
+    --max-width: 1200px;
+    --container-padding: 20px;
+    --section-padding: 60px 0;
+    --gutter: 20px;
+
+    /* Typography */
+    --font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-secondary: Georgia, serif;
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-mono: 'Courier New', Courier, monospace;
+    --font-size-base: 16px;
+    --font-size-lg: 1.5rem;
+    --font-size-xl: 2rem;
+    --line-height-base: 1.6;
+
+    /* Transitions */
+    --transition-timing: 0.3s ease;
+    --hover-transition: transform 0.3s ease;
+
+    /* Animation Timing */
+    --fast-animation: 0.3s;
+    --slow-animation: 0.6s;
+
+    /* Project Section */
+
+    --projects-columns: 3;
+    --spacing-medium: 1.5rem;
+
+    /* Consistent Typography */
+
+    --primary-font: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif';
+    --secondary-font: 'Arial, sans-serif';
+    --heading-font: var(--primary-font);
+    --body-font-size: 1rem;
+    --heading-font-size: 2.5rem;
+    --nav-font-size: 1.1rem;
+    --section-padding: 1.5rem;
+    --line-height: 1.6;
+}
+
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Base styles */
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--primary-background);
+    font-family: var(--font-primary);
+    line-height: var(--line-height);
+    margin: 0;
+    padding: 0;
+    /* color: var(--text-color); */
+}
+
+/* Heading styles */
+.heading-style {
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-large);
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-secondary);
+    line-height: var(--line-height);
+}
+
+h1 {
+    font-size: var(--font-size-xxxl);
+}
+
+h2 {
+    font-size: var(--font-size-xl);
+}
+
+h3 {
+    font-size: var(--font-size-l);
+}
+
+/* Create a class for paragraph text */
+.p-text {
+    font-size: var(--font-size-m);
+    line-height: var(--line-height);
+}
+
+/* Dark mode preference */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #1a1a1a;
+        --text-color: #ffffff;
+    }
+}
+
+/* nav styles */
+/* nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--nav-gap, 2rem);
+    padding: 1rem var(--container-padding);
+} */
+
+.nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.logo a {
+    font-size: 1.5rem;
+    font-weight: bold;
+    /* color: var(--text-color); */
+    text-decoration: none;
+}
+
+/* nav styling */
+.nav-container {
+    /* background-color: var(--primary-color); */
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.nav-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links a {
+
+    font-size: 1.1rem;
+
+    margin-right: 20px;
+
+    color: #333;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: #f4f4f4;
+    transform: translateY(-2px);
+    color: blue;
+}
+
+Active state for current section
+nav ul li a.active {
+    background-color: #333;
+    color:purple;
+  }
+
+  .nav-links {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-links:hover {
+    background-color: var(--hover-bg);
+    color: var(--hover-text);
+    padding: 0.5rem 1rem;
+  }
+  
+
+
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+    .nav-content {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+}
+
+
+/* Add this CSS for responsive navigation */
+@media (max-width: 768px) {
+    .nav-container {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: #fff;
+        padding: 1rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #fff;
+        padding: 1rem;
+        text-align: center;
+        display: none;
+        /* Hidden by default */
+    }
+
+    .nav-links.active {
+        display: flex;
+        /* Show when active */
+    }
+
+    .nav-links li {
+        margin: 1rem 0;
+    }
+
+    .hamburger-menu {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem;
+    }
+
+    .hamburger-lines {
+        width: 30px;
+        height: 3px;
+        background: #333;
+        margin: 5px 0;
+    }
+
+    .hamburger-lines:nth-child(2) {
+        width: 20px;
+    }
+}
+
+
+.hero-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    text-align: center;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 60px;
+    /* Prevent navigation bar overlap */
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+
+
+.projects-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--projects-columns), 1fr);
+    gap: var(--spacing-medium);
+    padding: 1rem;
+}
+
+.project-card {
+    background: var(--color-white);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;
+}
+
+.project-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.project-description {
+    color: var(--color-gray-600);
+    margin-bottom: 1rem;
+}
+
+
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 2rem 0;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.footer section {
+    flex: 1;
+    min-width: 250px;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    color: white;
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    color: #007bff;
+}
+
+.copyright {
+    width: 100%;
+    text-align: center;
+    padding-top: 1rem;
+    border-top: 1px solid #444;
+}
+
+
+
+
+
+
+
+
+
+/* Add these media queries to your CSS file */
+
+/* Tablet and smaller screens */
+@media (max-width: 768px) {
+
+    /* Navigation adjustments */
+    nav {
+        padding: 1rem;
+    }
+
+    /* Hero section adjustments */
+    .hero {
+        padding: 4rem 1rem;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+}
+
+/* Mobile and smaller screens */
+@media (max-width: 480px) {
+
+    /* Navigation adjustments */
+    nav a {
+        padding: 0.5rem;
+    }
+
+    /* Hero section adjustments */
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    /* Projects section adjustments */
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    /* Skills section adjustments */
+    .skills-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Adjust font sizes and spacing */
+@media (max-width: 320px) {
+    .hero h1 {
+        font-size: 1.75rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .project-card {
+        padding: 1rem;
+    }
+}
+
+/* Project Section */
+
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}

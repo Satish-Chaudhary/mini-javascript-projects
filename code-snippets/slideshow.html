@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slideshow</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .outer{
+            background: #444;
+            border: 2px solid black;
+            padding: 5px;
+            display: flex;
+            width: 900px;
+            overflow-x: scroll;
+        }
+        h2{
+            margin-bottom: 16px;
+        }
+        .inner{
+            display: grid;
+            flex: none;
+            grid-template-columns: auto auto auto;
+            width: 100%;
+            padding: 10px;
+            grid-gap: 20px;
+            
+        }
+        .inner img{
+            width: 100%;
+        }
+        /* button{
+            height: 50px;
+            display: flex;
+            background: orange;
+            border-radius: 50%;
+            margin: 5px;
+            padding: 5px;
+        } */
+    </style>
+</head>
+<body>
+    <h2>Slideshow</h2>
+    <div class="outer">
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        <!-- <button><</button> -->
+        <div class="inner">
+            
+            <img src="SaveClip.App_469277379_948588427325758_7009744449652268319_n.jpg" alt="">
+            <img src="SaveClip.App_469294178_1119264796301784_3348789007728623279_n.jpg" alt="">
+            <img src="SaveClip.App_469386037_1317691673004213_5363519773077680496_n.jpg" alt="">
+            <!-- <img src="SaveClip.App_469427825_1122137689537325_5965033429256050518_n.jpg" alt="">
+            <img src="Snapchat-1198013479.jpg" alt=""> -->
+            
+        </div>
+        <div class="inner">
+            
+            <img src="SaveClip.App_469277379_948588427325758_7009744449652268319_n.jpg" alt="">
+            <img src="SaveClip.App_469294178_1119264796301784_3348789007728623279_n.jpg" alt="">
+            <img src="SaveClip.App_469386037_1317691673004213_5363519773077680496_n.jpg" alt="">
+            <!-- <img src="SaveClip.App_469427825_1122137689537325_5965033429256050518_n.jpg" alt="">
+            <img src="Snapchat-1198013479.jpg" alt=""> -->
+            
+        </div>
+        <!-- <button>></button> -->
+    </div>
+</body>
+</html>
