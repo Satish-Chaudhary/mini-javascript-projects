@@ -1,45 +1,80 @@
-const apikey = "d9e83f42466e4347d9ea48c4c7baab00";
-const apiurl = "https://api.openweathermap.org/data/2.5/weather?q=";
+const API_KEY = "d9e83f42466e4347d9ea48c4c7baab00";
+const API_URL = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 
-const searchbox = document.querySelector(".search input");
-const searchbtn = document.querySelector(".search button");
-const weathericon = document.querySelector(".weather-icon");
+const WEATHER_ICONS = {
+  Clouds: "images/clouds.jpg",
+  Rain: "images/rain.jpg",
+  Clear: "images/clear.jpg",
+  Drizzle: "images/drizzle.jpg",
+  Mist: "images/mist.jpg",
+  Snow: "images/snow.jpg",
+  Default: "images/default.jpg"
+};
 
-async function checkweather(city) {
-  const response = await fetch(apiurl + city + `&appid=${apikey}`);
 
-  if (response.status == 404) {
-    document.querySelector(".error").style.display = "block";
-    document.querySelector(".weather").style.display = "none";
-  } else {
-    var data = await response.json();
+const searchBox = document.querySelector(".search input");
+const searchBtn = document.querySelector(".search button");
+const weatherIcon = document.querySelector(".weather-icon");
+const cityDisplay = document.querySelector(".city");
+const tempDisplay = document.querySelector(".temp");
+const humidityDisplay = document.querySelector(".humidity");
+const windDisplay = document.querySelector(".wind");
+const weatherDisplay = document.querySelector(".weather");
+const errorDisplay = document.querySelector(".error");
 
-    console.log(data);
 
-    document.querySelector(".city").innerHTML = data.name;
-    document.querySelector(".temp").innerHTML =
-      Math.round(data.main.temp - 273.15) + "°c";
-    document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
-    document.querySelector(".wind").innerHTML = (data.wind.speed) + " km/h";
+function showError() {
+  errorDisplay.style.display = "block";
+  weatherDisplay.style.display = "none";
+}
 
-    if (data.weather[0].main == "Clouds") {
-      weathericon.src = "../weather-app/images/cloud.jpg";
-    } else if (data.weather[0].main == "Rain") {
-      weathericon.src = "../weather-app/images/rain.jpg";
-    } else if (data.weather[0].main == "Clear") {
-      weathericon.src = "../weather-app/images/clear.jpg";
-    } else if (data.weather[0].main == "Drizzle") {
-      weathericon.src = "../weather-app/images/drizzle.jpg";
-    } else if (data.weather[0].main == "Mist") {
-      weathericon.src = "../weather-app/images/mist.jpg";
+
+function updateWeatherUI(data) {
+  cityDisplay.textContent = data.name;
+  tempDisplay.textContent = `${Math.round(data.main.temp)}°c`;
+  humidityDisplay.textContent = `${data.main.humidity}%`;
+  windDisplay.textContent = `${data.wind.speed} km/h`;
+
+  const mainWeather = data.weather[0].main;
+  weatherIcon.src = WEATHER_ICONS[mainWeather] || WEATHER_ICONS.Default;
+
+  weatherDisplay.style.display = "block";
+  errorDisplay.style.display = "none";
+}
+
+async function checkWeather(city) {
+  try {
+    const response = await fetch(`${API_URL}${encodeURIComponent(city)}&appid=${API_KEY}`);
+
+    if (!response.ok) {
+
+      console.error(`Error: ${response.status} ${response.statusText}`);
+      showError();
+      return;
     }
 
-    document.querySelector(".weather").style.display = "block";
-    document.querySelector(".error").style.display = "none";
+    const data = await response.json();
+    updateWeatherUI(data);
+  } catch (error) {
+
+    console.error("Fetch error:", error);
+    showError();
   }
 }
-// checkweather();
 
-searchbtn.addEventListener("click", () => {
-  checkweather(searchbox.value);
+
+function handleSearch() {
+  const city = searchBox.value.trim();
+  if (city) {
+    checkWeather(city);
+  }
+}
+
+searchBtn.addEventListener("click", handleSearch);
+
+
+searchBox.addEventListener("keyup", (event) => {
+  if (event.key === "Enter") {
+    handleSearch();
+  }
 });

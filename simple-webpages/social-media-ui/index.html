@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #6c63ff;
+            --secondary: #ff6584;
+            --dark: #2a2a3c;
+            --light: #f7f7ff;
+            --gray: #f0f0f7;
+            --gradient: linear-gradient(135deg, #6c63ff 0%, #4b44b8 100%);
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f2f5;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            margin-bottom: 20px;
+        }
+        
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        
+        .search-bar {
+            background: white;
+            border-radius: 20px;
+            padding: 8px 15px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .search-bar input {
+            border: none;
+            outline: none;
+            padding: 5px 10px;
+            width: 250px;
+        }
+        
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            color: var(--dark);
+            text-decoration: none;
+            position: relative;
+        }
+        
+        .nav-icon .notification {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--secondary);
+            color: white;
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Profile Section */
+        .profile-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 20px;
+        }
+        
+        .profile-card, .post-card, .stats-card, .suggestion-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .profile-header {
+            position: relative;
+            margin-bottom: 70px;
+        }
+        
+        .cover-photo {
+            height: 150px;
+            border-radius: 15px 15px 0 0;
+            overflow: hidden;
+            background: var(--gradient);
+        }
+        
+        .profile-info {
+            text-align: center;
+            margin-top: -60px;
+        }
+        
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 5px solid white;
+            margin: 0 auto;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .profile-info h2 {
+            margin: 15px 0 5px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .profile-info p {
+            color: #777;
+            margin-bottom: 15px;
+        }
+        
+        .profile-stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #777;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn {
+            flex: 1;
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Posts */
+        .post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .post-user {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .post-user img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .post-user-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .post-user-info span {
+            font-size: 0.9rem;
+            color: #777;
+        }
+        
+        .post-content {
+            margin-bottom: 15px;
+        }
+        
+        .post-image {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            max-height: 300px;
+        }
+        
+        .post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .post-stats {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 15px;
+        }
+        
+        .post-actions {
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .post-action {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #777;
+            cursor: pointer;
+            padding: 5px 15px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .post-action:hover {
+            background: #f0f2f5;
+            color: var(--primary);
+        }
+        
+        /* Suggestions */
+        .suggestion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .suggestion-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .suggestion-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .suggestion-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .suggestion-info {
+            flex: 1;
+        }
+        
+        .suggestion-info h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+        
+        .suggestion-info p {
+            font-size: 0.8rem;
+            color: #777;
+        }
+        
+        .follow-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .profile-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .search-bar input {
+                width: 150px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .search-bar {
+                width: 100%;
+            }
+            
+            .search-bar input {
+                width: 100%;
+            }
+            
+            .nav-icons {
+                width: 100%;
+                justify-content: space-around;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">Socialize</div>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search...">
+            </div>
+            <div class="nav-icons">
+                <a href="#" class="nav-icon">
+                    <i class="fas fa-home"></i>
+                </a>
+                <a href="#" class="nav-icon">
+                    <i class="fas fa-comment"></i>
+                    <span class="notification">3</span>
+                </a>
+                <a href="#" class="nav-icon">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification">5</span>
+                </a>
+                <a href="#" class="nav-icon">
+                    <i class="fas fa-user"></i>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Profile Content -->
+        <div class="profile-container">
+            <!-- Left Column -->
+            <div class="left-column">
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <div class="cover-photo"></div>
+                        <div class="profile-info">
+                            <div class="profile-pic">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80" alt="Profile Picture">
+                            </div>
+                            <h2>Alex Morgan</h2>
+                            <p>UX/UI Designer at TechInnovate</p>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-stats">
+                        <div class="stat">
+                            <div class="stat-value">245</div>
+                            <div class="stat-label">Posts</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">3.5K</div>
+                            <div class="stat-label">Followers</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">1.2K</div>
+                            <div class="stat-label">Following</div>
+                        </div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="btn btn-primary">Follow</button>
+                        <button class="btn btn-outline">Message</button>
+                    </div>
+                </div>
+                
+                <div class="stats-card">
+                    <h3>Profile Completion</h3>
+                    <div class="skill-bar" style="height: 10px; background: #eee; border-radius: 5px; margin: 15px 0; overflow: hidden;">
+                        <div class="skill-level" style="height: 100%; width: 85%; background: var(--gradient); border-radius: 5px;"></div>
+                    </div>
+                    <p>85% complete</p>
+                    
+                    <h3 style="margin-top: 20px;">Photos</h3>
+                    <div class="photos-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; margin-top: 10px;">
+                        <div style="height: 80px; background: var(--gradient); border-radius: 5px;"></div>
+                        <div style="height: 80px; background: var(--secondary); border-radius: 5px;"></div>
+                        <div style="height: 80px; background: #6c63ff; border-radius: 5px;"></div>
+                        <div style="height: 80px; background: #ff6584; border-radius: 5px;"></div>
+                        <div style="height: 80px; background: #4b44b8; border-radius: 5px;"></div>
+                        <div style="height: 80px; background: #6c63ff; border-radius: 5px;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Middle Column -->
+            <div class="middle-column">
+                <div class="post-card">
+                    <div class="post-header">
+                        <div class="post-user">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80" alt="User">
+                        </div>
+                        <div class="post-user-info">
+                            <h3>Alex Morgan</h3>
+                            <span>2 hours ago</span>
+                        </div>
+                    </div>
+                    
+                    <div class="post-content">
+                        <p>Just launched a new design project for a client! So excited to share this with everyone. The team worked incredibly hard to make this happen. 🎉</p>
+                    </div>
+                    
+                    <div class="post-image">
+                        <div style="height: 250px; background: var(--gradient); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            Design Project Preview
+                        </div>
+                    </div>
+                    
+                    <div class="post-stats">
+                        <div><i class="fas fa-heart" style="color: var(--secondary);"></i> 245 likes</div>
+                        <div>48 comments</div>
+                    </div>
+                    
+                    <div class="post-actions">
+                        <div class="post-action">
+                            <i class="far fa-heart"></i>
+                            <span>Like</span>
+                        </div>
+                        <div class="post-action">
+                            <i class="far fa-comment"></i>
+                            <span>Comment</span>
+                        </div>
+                        <div class="post-action">
+                            <i class="far fa-share-square"></i>
+                            <span>Share</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="post-card">
+                    <div class="post-header">
+                        <div class="post-user">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80" alt="User">
+                        </div>
+                        <div class="post-user-info">
+                            <h3>Sarah Johnson</h3>
+                            <span>5 hours ago</span>
+                        </div>
+                    </div>
+                    
+                    <div class="post-content">
+                        <p>Check out this amazing article about the future of UX design! What do you think will be the next big trend in our industry?</p>
+                    </div>
+                    
+                    <div class="post-stats">
+                        <div><i class="fas fa-heart" style="color: var(--secondary);"></i> 189 likes</div>
+                        <div>32 comments</div>
+                    </div>
+                    
+                    <div class="post-actions">
+                        <div class="post-action">
+                            <i class="far fa-heart"></i>
+                            <span>Like</span>
+                        </div>
+                        <div class="post-action">
+                            <i class="far fa-comment"></i>
+                            <span>Comment</span>
+                        </div>
+                        <div class="post-action">
+                            <i class="far fa-share-square"></i>
+                            <span>Share</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Column -->
+            <div class="right-column">
+                <div class="suggestion-card">
+                    <div class="suggestion-header">
+                        <h3>People You May Know</h3>
+                        <a href="#" style="text-decoration: none; color: var(--primary);">See All</a>
+                    </div>
+                    
+                    <div class="suggestion-item">
+                        <div class="suggestion-img">
+                            <img src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80" alt="User">
+                        </div>
+                        <div class="suggestion-info">
+                            <h4>Michael Chen</h4>
+                            <p>5 mutual friends</p>
+                        </div>
+                        <button class="follow-btn">Follow</button>
+                    </div>
+                    
+                    <div class="suggestion-item">
+                        <div class="suggestion-img">
+                            <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80" alt="User">
+                        </div>
+                        <div class="suggestion-info">
+                            <h4>Emily Rodriguez</h4>
+                            <p>3 mutual friends</p>
+                        </div>
+                        <button class="follow-btn">Follow</button>
+                    </div>
+                    
+                    <div class="suggestion-item">
+                        <div class="suggestion-img">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80" alt="User">
+                        </div>
+                        <div class="suggestion-info">
+                            <h4>David Wilson</h4>
+                            <p>7 mutual friends</p>
+                        </div>
+                        <button class="follow-btn">Follow</button>
+                    </div>
+                </div>
+                
+                <div class="suggestion-card">
+                    <div class="suggestion-header">
+                        <h3>Trending Topics</h3>
+                    </div>
+                    
+                    <div class="trending-item" style="padding: 10px 0; border-bottom: 1px solid #eee;">
+                        <h4 style="margin-bottom: 5px;">#UXDesign</h4>
+                        <p style="font-size: 0.9rem; color: #777;">5.2K posts</p>
+                    </div>
+                    
+                    <div class="trending-item" style="padding: 10px 0; border-bottom: 1px solid #eee;">
+                        <h4 style="margin-bottom: 5px;">#WebDevelopment</h4>
+                        <p style="font-size: 0.9rem; color: #777;">3.8K posts</p>
+                    </div>
+                    
+                    <div class="trending-item" style="padding: 10px 0; border-bottom: 1px solid #eee;">
+                        <h4 style="margin-bottom: 5px;">#TechInnovation</h4>
+                        <p style="font-size: 0.9rem; color: #777;">2.7K posts</p>
+                    </div>
+                    
+                    <div class="trending-item" style="padding: 10px 0;">
+                        <h4 style="margin-bottom: 5px;">#RemoteWork</h4>
+                        <p style="font-size: 0.9rem; color: #777;">1.9K posts</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Like button functionality
+        document.querySelectorAll('.post-action').forEach(action => {
+            action.addEventListener('click', function() {
+                if (this.querySelector('span').textContent === 'Like') {
+                    this.innerHTML = '<i class="fas fa-heart" style="color: var(--secondary);"></i> <span>Liked</span>';
+                }
+            });
+        });
+        
+        // Follow button functionality
+        document.querySelectorAll('.follow-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (this.textContent === 'Follow') {
+                    this.textContent = 'Following';
+                    this.style.background = '#777';
+                } else {
+                    this.textContent = 'Follow';
+                    this.style.background = 'var(--primary)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(to right, #4a00e0, #8e2de2);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            opacity: 0.9;
+        }
+        
+        .survey-form {
+            padding: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #444;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border 0.3s, box-shadow 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #6a11cb;
+            box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .radio-group, .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .radio-option, .checkbox-option {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .radio-option input, .checkbox-option input {
+            margin-right: 8px;
+            cursor: pointer;
+        }
+        
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(to right, #4a00e0, #8e2de2);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .required {
+            color: #e74c3c;
+        }
+        
+        .form-section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .form-section-title {
+            font-size: 1.4rem;
+            color: #4a00e0;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .character-count {
+            text-align: right;
+            font-size: 14px;
+            color: #777;
+            margin-top: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            .survey-form {
+                padding: 20px;
+            }
+            
+            .radio-group, .checkbox-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-poll"></i> Customer Satisfaction Survey</h1>
+            <p>We value your feedback. Please take a few minutes to complete this survey.</p>
+        </div>
+        
+        <form class="survey-form">
+            <div class="form-section">
+                <h2 class="form-section-title">Personal Information</h2>
+                
+                <div class="form-group">
+                    <label for="name">Full Name <span class="required">*</span></label>
+                    <input type="text" id="name" class="form-control" placeholder="Enter your full name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address <span class="required">*</span></label>
+                    <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="age">Age Group</label>
+                    <select id="age" class="form-control">
+                        <option value="" selected disabled>Select your age group</option>
+                        <option value="18-24">18-24</option>
+                        <option value="25-34">25-34</option>
+                        <option value="35-44">35-44</option>
+                        <option value="45-54">45-54</option>
+                        <option value="55+">55+</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h2 class="form-section-title">Your Experience</h2>
+                
+                <div class="form-group">
+                    <label>How would you rate our service? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="rating" value="excellent" required> Excellent
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="rating" value="good"> Good
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="rating" value="average"> Average
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="rating" value="poor"> Poor
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>How did you hear about us? <span class="required">*</span></label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="source" value="social"> Social Media
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="source" value="friend"> Friend's Recommendation
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="source" value="ad"> Online Advertisement
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="source" value="other"> Other
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="satisfaction">How satisfied are you with our product?</label>
+                    <input type="range" id="satisfaction" class="form-control" min="1" max="10" value="5">
+                    <div style="display: flex; justify-content: space-between; margin-top: 5px;">
+                        <span>Not Satisfied</span>
+                        <span>Very Satisfied</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h2 class="form-section-title">Additional Feedback</h2>
+                
+                <div class="form-group">
+                    <label for="improvements">What can we improve?</label>
+                    <textarea id="improvements" class="form-control" placeholder="Please share your suggestions for improvement"></textarea>
+                    <div class="character-count">0/250 characters</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="comments">Other Comments</label>
+                    <textarea id="comments" class="form-control" placeholder="Any other comments or feedback"></textarea>
+                    <div class="character-count">0/500 characters</div>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn">Submit Survey <i class="fas fa-paper-plane"></i></button>
+        </form>
+    </div>
+
+    <script>
+        // Character count for textareas
+        const improvementsTextarea = document.getElementById('improvements');
+        const commentsTextarea = document.getElementById('comments');
+        const improvementsCount = improvementsTextarea.nextElementSibling;
+        const commentsCount = commentsTextarea.nextElementSibling;
+        
+        improvementsTextarea.addEventListener('input', function() {
+            improvementsCount.textContent = `${this.value.length}/250 characters`;
+        });
+        
+        commentsTextarea.addEventListener('input', function() {
+            commentsCount.textContent = `${this.value.length}/500 characters`;
+        });
+        
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for completing our survey! Your feedback has been submitted.');
+            this.reset();
+            improvementsCount.textContent = '0/250 characters';
+            commentsCount.textContent = '0/500 characters';
+        });
+    </script>
+</body>
+</html>
