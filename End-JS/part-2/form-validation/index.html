@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            background: #f4f6f9;
+        }
+
+        h1 {
+            margin-bottom: 15px;
+            color: lightseagreen;
+        }
+
+        .container {
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 320px;
+        }
+
+        form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #4CAF50;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        .error {
+            font-size: 12px;
+            color: red;
+            margin-top: 5px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Email & Password Validator</h1>
+    <div class="container">
+        <form autocomplete="off" id="loginForm">
+            <h2>Login</h2>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter your email">
+                <small class="error" id="emailError"></small>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password">
+                <small class="error" id="passwordError"></small>
+            </div>
+
+            <button type="submit">Validate</button>
+        </form>
+    </div>
+    <script>
+        
+let email = document.querySelector("#email");
+let pass = document.querySelector("#password");
+let form = document.querySelector("#loginForm");
+let emailError = document.querySelector("#emailError");
+let passError = document.querySelector("#passwordError");
+
+form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const emailRegex = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/;
+    const passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+    emailError.textContent = "";
+    passError.textContent = "";
+    let isValid = true;
+
+    let emailTest = emailRegex.test(email.value)
+    let passTest = passRegex.test(pass.value)
+
+    if (!emailTest) {
+        emailError.textContent = "Email not valid.";
+        emailError.style.display = "initial";
+        isValid = false;
+    }
+
+    if (!passTest) {
+        passError.textContent = "Password not valid.";
+        passError.style.display = "initial";
+        isValid = false;
+    }
+    if(isValid){
+        alert("Login Successfull!");
+    }
+});
+    </script>
+</body>
+
+</html>
